@@ -1,0 +1,46 @@
+/* src/components/CTASection.module.css */
+
+.ctaContainer {
+  /* Gunakan warna yang sama dengan section Fitur */
+  background-color: #fdfcfe;
+  width: 100%;
+  padding: 5rem 5%; /* Padding 5rem atas/bawah */
+  box-sizing: border-box;
+
+  /* Pusatkan semua konten */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Tombol Download */
+/* Kita copy style dari tombol Hero agar konsisten */
+.downloadButton {
+  display: inline-block; /* Penting untuk tag <a> */
+  background-color: #634832; /* Warna coklat tua */
+  color: white;
+  text-decoration: none; /* Hapus underline default link */
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px; /* Bikin jadi oval/pil */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.downloadButton:hover {
+  background-color: #4a3625; /* Warna lebih gelap saat hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,160 @@
+/* src/components/Navbar.module.css */
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%; /* Padding 0 atas-bawah, 5% kiri-kanan */
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  height: 125px; /* Sesuai permintaan desain Anda */
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 1. Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+}
+
+.logoSvg {
+  /* --- PERUBAHAN DI SINI --- */
+  height: 100px; /* Ukuran logo disesuaikan (dari 35px) */
+  margin-right: 0.75rem;
+}
+
+.logo span {
+  /* --- PERUBAHAN DI SINI --- */
+  font-size: 1.75rem; /* Font "TIME TRACK" dibesarkan */
+}
+
+/* 2. Link Navigasi */
+.navLinks {
+  display: flex;
+  list-style: none;
+  /* --- PERUBAHAN DI SINI --- */
+  gap: 3rem; /* Jarak antar link dilebarkan (dari 2.5rem) */
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  /* --- PERUBAHAN DI SINI --- */
+  font-size: 1.15rem; /* Ukuran font link dibesarkan (dari 1rem) */
+  transition: color 0.2s ease;
+
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.navLinks a:hover {
+  color: #000;
+}
+
+.navLinks a.active {
+  color: #000;
+  font-weight: 700;
+}
+
+.navLinks a::after {
+  content: ""; /* Wajib ada untuk pseudo-element */
+  position: absolute;
+  bottom: 0; /* Posisikan di paling bawah */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Ketebalan garis */
+  background-color: #000; /* Warna garis (samakan dgn warna .active) */
+
+  /* Sembunyikan garisnya (mulai dari lebar 0) */
+  transform: scaleX(0);
+  transform-origin: bottom left; /* Animasi dari kiri ke kanan */
+
+  /* Atur kecepatan animasi */
+  transition: transform 0.3s ease-out;
+}
+
+/* Saat di-hover, tampilkan garisnya */
+.navLinks a:hover::after {
+  transform: scaleX(1); /* Tampilkan lebar 100% */
+}
+
+/* Bonus: Tampilkan juga garis untuk link yang .active */
+.navLinks a.active::after {
+  transform: scaleX(1); /* Langsung tampil (tidak perlu hover) */
+}
+
+/* 3. Aksi (Search & Ikon) */
+.navActions {
+  display: flex;
+  align-items: center;
+  /* --- PERUBAHAN DI SINI --- */
+  gap: 1.5rem; /* Jarak searchbar ke ikon (dari 1.5rem) */
+}
+
+.searchBar {
+  position: relative;
+}
+
+.searchBar input {
+  /* --- PERUBAHAN DI SINI --- */
+  padding: 0.8rem 1.2rem; /* Padding dibesarkan */
+  padding-right: 3rem; /* Ruang untuk ikon */
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-size: 1rem; /* Font di dalam searchbar dibesarkan */
+  min-width: 250px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 1.2rem; /* Disesuaikan dengan padding baru */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1.1rem; /* Ikon search dibesarkan sedikit */
+}
+
+.userIcons {
+  display: flex;
+  /* --- PERUBAHAN DI SINI --- */
+  gap: 1.5rem; /* Jarak antar ikon (dari 1.2rem) */
+  color: #333;
+}
+
+.userIcons svg {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.iconShape {
+  /* 1. Atur warna background shape */
+  background-color: #d0aa7b;
+
+  /* 2. Atur ukuran shape */
+  width: 50px; /* Sesuaikan ukurannya */
+  height: 50px; /* Sesuaikan ukurannya */
+
+  /* 3. Border-radius Anda (sudah benar) */
+  border-radius: 17.53px;
+
+  /* 4. Ajaib: Ini untuk menengahkan ikon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userIcons svg:hover {
+  color: #000;
+}

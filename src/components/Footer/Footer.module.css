@@ -1,0 +1,68 @@
+/* src/components/Footer.module.css */
+
+.footerContainer {
+  width: 100%;
+  padding: 2.5rem 5%; /* Padding atas/bawah 2.5rem, kiri/kanan 5% */
+  background-color: #333; /* Warna gelap untuk footer */
+  color: #aaa; /* Warna teks abu-abu terang */
+
+  /* Pusatkan semua konten */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Jarak antar bagian (kontak, legal, copyright) */
+  box-sizing: border-box;
+}
+
+/* 1. Info Kontak */
+.contactInfo {
+  display: flex;
+  flex-wrap: wrap; /* Biarkan 'wrap' di layar kecil */
+  justify-content: center;
+  gap: 2rem; /* Jarak antar email dan telepon */
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Jarak ikon ke teks */
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.contactItem:hover {
+  color: #fff; /* Jadi putih saat di-hover */
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+/* 2. Link Legal */
+.legalLinks {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.legalLinks a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.legalLinks a:hover {
+  color: #fff;
+}
+
+/* 3. Copyright */
+.copyright {
+  font-size: 0.8rem;
+  color: #777;
+  text-align: center;
+  border-top: 1px solid #555; /* Garis pemisah tipis */
+  width: 100%;
+  padding-top: 1.5rem; /* Jarak dari garis pemisah */
+}

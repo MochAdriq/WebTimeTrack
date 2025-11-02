@@ -1,0 +1,29 @@
+/* src/index.css */
+/* Ini akan memperbaiki masalah "tidak menempel di atas"
+   dan "tidak penuh kiri-kanan" */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+main {
+  display: block;
+  margin: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
