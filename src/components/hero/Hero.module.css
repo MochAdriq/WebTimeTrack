@@ -1,17 +1,23 @@
 /* src/components/Hero.module.css */
+/* VERSI BERSIH + RESPONSIF */
 
 .heroContainer {
   width: 100%;
   box-sizing: border-box;
   background-color: #fdfcfe;
   position: relative;
-
-  height: 800px;
   overflow: hidden;
   isolation: isolate; /* Menciptakan 'stacking context' baru */
+
+  /* PENYESUAIAN: Lebih baik dari 'height: 800px' */
+  min-height: calc(100vh - 80px); /* 100% tinggi layar - tinggi navbar */
+
+  /* Tambahkan ini untuk layout responsif nanti */
+  display: flex;
+  align-items: center;
 }
 
-/* Gradien di atas konten Hero (melayang di paling depan) */
+/* Gradien di atas (Sudah benar) */
 .heroContainer::before {
   content: "";
   position: absolute;
@@ -19,54 +25,44 @@
   left: 0;
   width: 100%;
   height: 20%;
-  z-index: 4; /* Lebih tinggi dari semua elemen lain di Hero */
-  pointer-events: none; /* Penting agar tombol tetap bisa diklik */
-
-  /* Gradien yang Anda berikan (untuk bagian atas) */
+  z-index: 4;
+  pointer-events: none;
   background: linear-gradient(
     0deg,
     rgba(233, 226, 207, 0) 2.96%,
     rgba(233, 226, 207, 0.27) 32.61%,
     #e9e2cf 88.63%
   );
-
-  /* Pastikan gradien dimulai dari atas container */
   transform: translateY(0%);
 }
 
-/* Gradien di bawah konten Hero (melayang di paling depan) */
+/* Gradien di bawah (Logika diperbaiki) */
 .heroContainer::after {
   content: "";
   position: absolute;
-  bottom: 0; /* Posisikan di bawah */
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%;
-  z-index: 4; /* Sama tingginya dengan gradien atas */
-  pointer-events: none; /* Penting agar elemen di bawah tetap bisa berinteraksi */
+  height: 40%; /* Ini tinggi default (Desktop) */
+  z-index: 4;
+  pointer-events: none;
 
-  /* Gradien yang Anda berikan (untuk bagian bawah) */
+  /* --- PERBAIKAN LOGIKA GRADien --- */
+  /* 180deg (atas-ke-bawah) dan HAPUS scaleY(-1) */
   background: linear-gradient(
-    0deg,
+    180deg,
     rgba(233, 226, 207, 0) 2.96%,
     rgba(233, 226, 207, 0.27) 32.61%,
     #e9e2cf 88.63%
   );
-
-  /* Balik arah gradien agar efeknya dari bawah ke atas */
-  transform: scaleY(-1);
-  /* Atau bisa juga: */
-  /* background: linear-gradient(0deg, rgba(233, 226, 207, 0.00) 2.96%, rgba(233, 226, 207, 0.27) 32.61%, #E9E2CF 88.63%); */
 }
 
 .leftColumn {
   position: absolute;
-  top: 15px; /* Jarak dari atas */
-  left: 6%; /* Jarak dari kiri (sesuai padding lama) */
-
+  top: 15px;
+  left: 6%;
   width: 40%;
-  z-index: 1; /* PENTING: Tumpukan #1 (paling bawah) */
-
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,19 +79,19 @@
   position: absolute;
   top: 0;
   left: 40%;
-  width: 60%; /* Lebar sisa 60% */
-  z-index: 2; /* PENTING: Tumpukan #2 (di atas GIF) */
-  min-height: 700px;
-  object-fit: cover; /* Mirip background-size: cover */
+  width: 60%;
+  z-index: 2;
+  min-height: 100%; /* PENYESUAIAN: Mengisi kontainer */
+  object-fit: cover;
   object-position: center;
 }
 
 .dualPhonesImage {
   position: absolute;
-  top: 15%; /* Jarak dari atas (sesuaikan) */
-  right: 15%; /* Jarak dari kanan */
-  z-index: 5; /* PENTING: Tumpukan #3 (paling depan) */
-  height: 500px;
+  top: 15%;
+  right: 15%;
+  z-index: 5;
+  height: 400px;
   width: auto;
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
   transition: transform 0.3s ease;
@@ -105,6 +101,7 @@
   transform: scale(1.02);
 }
 
+/* ... (Kode .downloadButton Anda tetap sama) ... */
 .downloadButton {
   background-color: #634832;
   color: white;
@@ -118,9 +115,59 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 .downloadButton:hover {
   background-color: #4a3625;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- RESPONSIF (UNTUK HP) --- */
+@media (max-width: 768px) {
+  /* Ubah layout Hero di HP */
+  .heroContainer {
+    min-height: auto; /* Hapus tinggi kaku */
+    height: auto;
+    flex-direction: column; /* Tumpuk semua elemen */
+    padding: 3rem 5%;
+  }
+
+  /* Sembunyikan BG di HP agar bersih */
+  .heroBgImage {
+    display: none;
+  }
+
+  /* Posisikan ulang elemen (tidak lagi 'absolute') */
+  .leftColumn {
+    position: static; /* PENTING: Hapus 'absolute' */
+    width: 100%;
+    align-items: center;
+    left: 0;
+    top: 0;
+    order: 2; /* Pindah ke bawah gambar HP */
+    margin-top: 2rem;
+  }
+
+  .dualPhonesImage {
+    position: static; /* PENTING: Hapus 'absolute' */
+    width: 90%; /* Perkecil HP agar muat */
+    height: auto;
+    right: 0;
+    top: 0;
+    order: 1; /* Pindah ke atas tombol */
+  }
+
+  .heroGif {
+    max-width: 300px; /* Batasi lebar GIF */
+  }
+
+  /* --- INI PERMINTAAN ANDA, BOSS --- */
+  /* Ubah tinggi gradien bawah di HP */
+  .heroContainer::after {
+    height: 10%; /* Ubah dari 40% (Desktop) ke 60% (HP) */
+  }
+
+  .downloadButton {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
 }

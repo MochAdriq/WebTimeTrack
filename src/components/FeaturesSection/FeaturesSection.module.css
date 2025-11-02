@@ -1,5 +1,5 @@
 /* src/components/FeaturesSection.module.css */
-/* VERSI BERSIH - TANPA KARAKTER ILEGAL */
+/* VERSI BERSIH: Ukuran disesuaikan + Responsif */
 
 .featuresContainer {
   width: 100%;
@@ -21,7 +21,7 @@
 }
 
 .leftColumn h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem; /* PENYESUAIAN: Perkecil sedikit */
   color: #333;
   margin-bottom: 2rem;
 }
@@ -34,7 +34,7 @@
 }
 
 .featureList li {
-  font-size: 2rem;
+  font-size: 1.8rem; /* PENYESUAIAN: Perkecil sedikit */
   font-weight: 500;
   color: #888;
   margin-bottom: 1.5rem;
@@ -58,7 +58,7 @@
 }
 
 .descriptionBox p {
-  font-size: 1.1rem;
+  font-size: 1rem; /* PENYESUAIAN: Perkecil ke 16px default */
   color: #666;
   line-height: 1.6;
   max-width: 400px;
@@ -79,16 +79,17 @@
 .slide img {
   width: 100%;
   height: auto;
+  /* Tambahkan transisi agar mulus saat slide berganti */
+  transition: transform 0.4s ease-out;
 }
 
+/* Style transform kustom Anda tetap dipertahankan */
 .slideStyle1 {
   transform: scale(0.6) translateY(0px);
 }
-
 .slideStyle2 {
   transform: scale(0.9) translateY(150px) translateX(10px);
 }
-
 .slideStyle3 {
   transform: scale(0.8) translateY(120px) translateX(10px);
 }
@@ -108,7 +109,6 @@
   content: none;
 }
 
-/* Posisi Panah */
 .slickArrow img {
   width: 100%;
   height: 100%;
@@ -116,15 +116,54 @@
   opacity: 0.7;
   transition: opacity 0.3s ease;
 }
-
 .slickArrow:hover img {
   opacity: 1;
 }
 
 .slickPrev {
-  left: -200px;
+  left: -80px; /* Nilai Anda */
+}
+.slickNext {
+  right: -80px; /* Nilai Anda */
 }
 
-.slickNext {
-  right: -200px;
+/* --- TAMBAHAN: RESPONSIF (UNTUK HP) --- */
+@media (max-width: 768px) {
+  .featuresContainer {
+    flex-direction: column; /* Tumpuk kolomnya */
+    padding: 3rem 5%;
+  }
+
+  .leftColumn {
+    flex-basis: 100%; /* Lebar penuh */
+    align-items: center; /* Tengahkan di HP */
+    text-align: center;
+  }
+
+  .descriptionBox {
+    align-items: center;
+    border-left: none; /* Hapus border di HP */
+  }
+
+  .descriptionBox p {
+    max-width: 100%;
+  }
+
+  .rightColumn {
+    flex-basis: 100%; /* Lebar penuh */
+    width: 90%; /* Pastikan tidak terlalu lebar */
+    max-width: 300px;
+    margin-top: 3rem; /* Beri jarak dari atas */
+  }
+
+  /* Pindahkan panah agar muat di layar HP */
+  .slickPrev {
+    left: -10px;
+  }
+  .slickNext {
+    right: -10px;
+  }
+
+  /* Sesuaikan transform Anda di HP jika perlu */
+  /* .slideStyle1, .slideStyle2, .slideStyle3 { ... } */
 }

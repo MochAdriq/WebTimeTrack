@@ -1,17 +1,16 @@
-/* src/components/Navbar.module.css */
+/* src/components/navbar/Navbar.module.css */
+/* VERSI BERSIH + LOGIKA BURGER */
 
 .navbarContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5%; /* Padding 0 atas-bawah, 5% kiri-kanan */
+  padding: 0 5%;
   width: 100%;
   box-sizing: border-box;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-
-  height: 125px; /* Sesuai permintaan desain Anda */
-
+  height: 80px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -24,25 +23,24 @@
   text-decoration: none;
   color: #333;
   font-weight: 700;
+  /* Tambahkan z-index agar logo di atas menu mobile */
+  z-index: 1002;
 }
 
 .logoSvg {
-  /* --- PERUBAHAN DI SINI --- */
-  height: 100px; /* Ukuran logo disesuaikan (dari 35px) */
+  height: 60px;
   margin-right: 0.75rem;
 }
 
 .logo span {
-  /* --- PERUBAHAN DI SINI --- */
-  font-size: 1.75rem; /* Font "TIME TRACK" dibesarkan */
+  font-size: 1.5rem;
 }
 
-/* 2. Link Navigasi */
+/* 2. Link Navigasi (Desktop) */
 .navLinks {
   display: flex;
   list-style: none;
-  /* --- PERUBAHAN DI SINI --- */
-  gap: 3rem; /* Jarak antar link dilebarkan (dari 2.5rem) */
+  gap: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -51,10 +49,8 @@
   text-decoration: none;
   color: #555;
   font-weight: 500;
-  /* --- PERUBAHAN DI SINI --- */
-  font-size: 1.15rem; /* Ukuran font link dibesarkan (dari 1rem) */
+  font-size: 1rem;
   transition: color 0.2s ease;
-
   position: relative;
   padding-bottom: 5px;
 }
@@ -62,99 +58,149 @@
 .navLinks a:hover {
   color: #000;
 }
-
 .navLinks a.active {
   color: #000;
   font-weight: 700;
 }
-
 .navLinks a::after {
-  content: ""; /* Wajib ada untuk pseudo-element */
+  content: "";
   position: absolute;
-  bottom: 0; /* Posisikan di paling bawah */
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px; /* Ketebalan garis */
-  background-color: #000; /* Warna garis (samakan dgn warna .active) */
-
-  /* Sembunyikan garisnya (mulai dari lebar 0) */
+  height: 2px;
+  background-color: #000;
   transform: scaleX(0);
-  transform-origin: bottom left; /* Animasi dari kiri ke kanan */
-
-  /* Atur kecepatan animasi */
+  transform-origin: bottom left;
   transition: transform 0.3s ease-out;
 }
-
-/* Saat di-hover, tampilkan garisnya */
 .navLinks a:hover::after {
-  transform: scaleX(1); /* Tampilkan lebar 100% */
+  transform: scaleX(1);
 }
-
-/* Bonus: Tampilkan juga garis untuk link yang .active */
 .navLinks a.active::after {
-  transform: scaleX(1); /* Langsung tampil (tidak perlu hover) */
+  transform: scaleX(1);
 }
 
 /* 3. Aksi (Search & Ikon) */
 .navActions {
   display: flex;
   align-items: center;
-  /* --- PERUBAHAN DI SINI --- */
-  gap: 1.5rem; /* Jarak searchbar ke ikon (dari 1.5rem) */
+  gap: 1.5rem;
 }
 
 .searchBar {
   position: relative;
 }
-
 .searchBar input {
-  /* --- PERUBAHAN DI SINI --- */
-  padding: 0.8rem 1.2rem; /* Padding dibesarkan */
-  padding-right: 3rem; /* Ruang untuk ikon */
+  padding: 0.7rem 1rem;
+  padding-right: 2.5rem;
   border-radius: 20px;
   border: 1px solid #ddd;
-  font-size: 1rem; /* Font di dalam searchbar dibesarkan */
-  min-width: 250px;
+  font-size: 0.9rem;
+  min-width: 200px;
 }
-
 .searchIcon {
   position: absolute;
-  right: 1.2rem; /* Disesuaikan dengan padding baru */
+  right: 1.2rem;
   top: 50%;
   transform: translateY(-50%);
   color: #aaa;
-  font-size: 1.1rem; /* Ikon search dibesarkan sedikit */
+  font-size: 1rem;
 }
 
 .userIcons {
   display: flex;
-  /* --- PERUBAHAN DI SINI --- */
-  gap: 1.5rem; /* Jarak antar ikon (dari 1.2rem) */
+  gap: 1rem;
   color: #333;
 }
-
-.userIcons svg {
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
 .iconShape {
-  /* 1. Atur warna background shape */
   background-color: #d0aa7b;
-
-  /* 2. Atur ukuran shape */
-  width: 50px; /* Sesuaikan ukurannya */
-  height: 50px; /* Sesuaikan ukurannya */
-
-  /* 3. Border-radius Anda (sudah benar) */
-  border-radius: 17.53px;
-
-  /* 4. Ajaib: Ini untuk menengahkan ikon */
+  width: 45px;
+  height: 45px;
+  border-radius: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.userIcons svg {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
 .userIcons svg:hover {
   color: #000;
+}
+
+/* --- LOGIKA BARU UNTUK BURGER --- */
+
+/* 1. Sembunyikan ikon burger di Desktop */
+.burgerIcon {
+  display: none;
+  font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+  /* Pastikan di atas menu */
+  z-index: 1002;
+}
+
+/* --- RESPONSIF (UNTUK HP) --- */
+@media (max-width: 768px) {
+  /* 2. Sembunyikan Navigasi Kanan Desktop di HP */
+  .navActions {
+    display: none;
+  }
+
+  /* 3. Tampilkan Ikon Burger di HP */
+  .burgerIcon {
+    display: block;
+  }
+
+  /* 4. Ubah .navLinks (yang berisi link) menjadi Menu HP */
+  .navLinks {
+    /* Sembunyikan menu secara default */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Mulai dari luar layar di kanan */
+    width: 100%;
+    height: 100vh; /* Setinggi layar */
+
+    /* Ubah layout jadi vertikal */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.95
+    ); /* Latar belakang putih transparan */
+    backdrop-filter: blur(10px);
+    transition: right 0.4s ease-in-out;
+    z-index: 1001; /* Di bawah navbar, tapi di atas konten */
+  }
+
+  .navLinks a {
+    font-size: 2rem; /* Perbesar font di menu HP */
+    color: #333;
+  }
+  .navLinks a::after {
+    /* Sembunyikan underline di menu mobile */
+    display: none;
+  }
+
+  /* 5. Ini adalah kelas 'Sihir'-nya */
+  /* Saat state 'isMenuOpen' true, .mobileMenu ditambahkan */
+  .mobileMenu {
+    right: 0; /* Tarik menu ke dalam layar */
+  }
+
+  /* 6. Penyesuaian navbar di HP */
+  .navbarContainer {
+    height: 70px;
+    padding: 0 5%;
+  }
+  .logoSvg {
+    height: 50px;
+  }
 }

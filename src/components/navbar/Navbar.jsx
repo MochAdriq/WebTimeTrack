@@ -1,51 +1,64 @@
-// src/components/Navbar.jsx
-
-import React from "react";
+import React, { useState } from "react"; // 1. Impor useState
 import styles from "./Navbar.module.css";
 
-// 1. Aset Anda
+// Aset Anda
 import logoUrl from "../../assets/images/logo/logo.svg";
 import bellIcon from "../../assets/images/iconNavbar/bellIcon.svg";
 import unionIcon from "../../assets/images/iconNavbar/unionIcon.svg";
 
-// 2. Hapus Impor Ikon yang Tidak Terpakai
+// 2. Impor ikon untuk Burger & Search
 import { FaSearch } from "react-icons/fa";
-// import { FaRegUserCircle, FaShoppingBag } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa"; // <-- Impor ikon Burger
 
 function Navbar() {
+  // 3. Buat state untuk melacak menu (default: tertutup)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // 4. Fungsi untuk menutup menu (dipakai saat link diklik)
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <nav className={styles.navbarContainer}>
-      {/* 3. Link Logo -> ke #hero */}
-      <a href="#hero" className={styles.logo}>
+    // 5. Tambahkan kelas .menuOpen jika state-nya true
+    <nav
+      className={`${styles.navbarContainer} ${
+        isMenuOpen ? styles.menuOpen : ""
+      }`}
+    >
+      {/* Link Logo (tambahkan closeMenu) */}
+      <a href="#hero" className={styles.logo} onClick={closeMenu}>
         <img src={logoUrl} alt="Time Track Logo" className={styles.logoSvg} />
       </a>
 
-      {/* 4. Bagian Link (Diganti ke Scroll-to-Section) */}
-      <ul className={styles.navLinks}>
+      {/* 6. Bagian Link (tambahkan kelas mobileMenu & closeMenu) */}
+      <ul
+        className={`${styles.navLinks} ${isMenuOpen ? styles.mobileMenu : ""}`}
+      >
         <li>
-          <a href="#hero" className={styles.active}>
+          <a href="#hero" className={styles.active} onClick={closeMenu}>
             Home
           </a>
         </li>
         <li>
-          {/* Mengarah ke <section id="fitur"> */}
-          <a href="#fitur">Fitur</a>
+          <a href="#fitur" onClick={closeMenu}>
+            Fitur
+          </a>
         </li>
         <li>
-          {/* Mengarah ke <footer id="kontak"> */}
-          <a href="#kontak">Kontak</a>
+          <a href="#kontak" onClick={closeMenu}>
+            Kontak
+          </a>
         </li>
-        {/* Link "About" dan "Sign Up" dihapus agar lebih bersih */}
       </ul>
 
-      {/* 5. Bagian Aksi Kanan (Kita pertahankan ikon baru Anda) */}
+      {/* 7. Bagian Aksi Kanan (Desktop) */}
       <div className={styles.navActions}>
         <div className={styles.searchBar}>
           <input type="text" placeholder="What are you looking for?" />
           <FaSearch className={styles.searchIcon} />
         </div>
 
-        {/* Ikon baru Anda tetap di sini */}
         <div className={styles.userIcons}>
           <div className={styles.iconShape}>
             <img src={bellIcon} alt="Notifikasi" />
@@ -54,6 +67,15 @@ function Navbar() {
             <img src={unionIcon} alt="Profil" />
           </div>
         </div>
+      </div>
+
+      {/* 8. Ikon Burger (Hanya tampil di HP) */}
+      <div
+        className={styles.burgerIcon}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        {/* Ganti ikon berdasarkan state */}
+        {isMenuOpen ? <FaTimes /> : <FaBars />}
       </div>
     </nav>
   );

@@ -66,3 +66,15 @@
   width: 100%;
   padding-top: 1.5rem; /* Jarak dari garis pemisah */
 }
+
+@media (max-width: 768px) {
+  .contactInfo {
+    flex-direction: column; /* Tumpuk info kontak */
+    gap: 1rem;
+  }
+
+  .legalLinks {
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
