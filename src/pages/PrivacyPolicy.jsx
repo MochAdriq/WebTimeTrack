@@ -4,14 +4,17 @@ import React from "react";
 import styles from "./PrivacyPolicy.module.css";
 
 function PrivacyPolicy() {
-  // Tanya: Ganti [Tanggal Hari Ini] dengan tanggal sekarang
+  // Data Anda yang sudah ada
   const effectiveDate = "16 November 2025";
-
-  // Tanya: Ganti dengan info Anda
   const companyName = "Time Track";
   const contactEmail = "storytimetrack@gmail.com";
   const contactAddress =
     "Jl. Raya Cibolang No.21 Cisaat Sukabumi 43152 Indonesia.";
+
+  // --- TOLONG ISI DUA BARIS INI, BOSS ---
+  const adminEmail = "storytimetrack@gmail.com"; // (Misal: "admin@timetrack.com")
+  const deletionTime = "7-14 hari kerja";
+  // --- --- --- --- --- --- --- ---
 
   return (
     <div className={styles.policyContainer}>
@@ -119,7 +122,35 @@ function PrivacyPolicy() {
         melalui layar Profil Saya di dalam aplikasi.
       </p>
 
-      <h2>5. Kontak Kami</h2>
+      {/* --- BAGIAN BARU DITAMBAHKAN DI SINI --- */}
+      <h2>5. Penghapusan Akun Pengguna</h2>
+      <p>
+        Anda berhak untuk meminta penghapusan akun Anda dan data terkait kapan
+        saja.
+      </p>
+      <p>
+        Karena fitur penghapusan otomatis di dalam aplikasi belum tersedia,
+        silakan kirim email permintaan penghapusan akun ke alamat email di bawah
+        ini dari alamat email yang terdaftar di akun TimeTrackerApp Anda:
+      </p>
+      <p>
+        <strong>{adminEmail}</strong>
+      </p>
+      <p>Data berikut akan dihapus secara permanen:</p>
+      <ul>
+        <li>Data Profil Anda (nama, username, email, dll.)</li>
+        <li>Riwayat Kuis dan Poin</li>
+        <li>Riwayat Pesan Chat</li>
+        <li>Riwayat Pembelian Premium dan Marketplace</li>
+      </ul>
+      <p>
+        Proses penghapusan akan kami lakukan dalam waktu {deletionTime}
+        setelah menerima permintaan Anda.
+      </p>
+      {/* --- AKHIR BAGIAN BARU --- */}
+
+      {/* --- BAGIAN LAMA DI-RENUMBER --- */}
+      <h2>6. Kontak Kami</h2>
       <p>
         Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi ini, silakan
         hubungi kami melalui:
