@@ -27,7 +27,7 @@ function Navbar() {
       }`}
     >
       {/* Link Logo (tambahkan closeMenu) */}
-      <a href="#hero" className={styles.logo} onClick={closeMenu}>
+      <a href="/#hero" className={styles.logo} onClick={closeMenu}>
         <img src={logoUrl} alt="Time Track Logo" className={styles.logoSvg} />
       </a>
 
@@ -36,17 +36,17 @@ function Navbar() {
         className={`${styles.navLinks} ${isMenuOpen ? styles.mobileMenu : ""}`}
       >
         <li>
-          <a href="#hero" className={styles.active} onClick={closeMenu}>
+          <a href="/#hero" className={styles.active} onClick={closeMenu}>
             Home
           </a>
         </li>
         <li>
-          <a href="#fitur" onClick={closeMenu}>
+          <a href="/#fitur" onClick={closeMenu}>
             Fitur
           </a>
         </li>
         <li>
-          <a href="#kontak" onClick={closeMenu}>
+          <a href="/#kontak" onClick={closeMenu}>
             Kontak
           </a>
         </li>

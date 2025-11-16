@@ -1,23 +1,18 @@
 // src/App.jsx
 
-// 1. Impor semua komponen yang sudah dipetakan
+import React from "react";
+import { Outlet } from "react-router-dom"; // 1. Impor Outlet
 import Navbar from "./components/navbar/Navbar";
-import Hero from "./components/hero/Hero";
-import FeaturesSection from "./components/FeaturesSection/FeaturesSection";
-import CTASection from "./components/CTASection/CTASection";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <div>
       <Navbar />
-
       <main>
-        <Hero />
-        <FeaturesSection />
-        <CTASection />
+        {/* 2. Ganti semua section dengan Outlet */}
+        <Outlet />
       </main>
-
       <Footer />
     </div>
   );

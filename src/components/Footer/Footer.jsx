@@ -27,9 +27,7 @@ function Footer() {
 
       {/* Bagian Tengah: Info Legal */}
       <div className={styles.legalLinks}>
-        <a href="#">Kebijakan Privasi</a>
-        <span>|</span>
-        <a href="#">Syarat & Ketentuan</a>
+        <a href="/privacy">Kebijakan Privasi</a>
       </div>
 
       {/* Bagian Bawah: Copyright */}
