@@ -3,8 +3,8 @@ import styles from "./Navbar.module.css";
 
 // Aset Anda
 import logoUrl from "../../assets/images/logo/logo.svg";
-import bellIcon from "../../assets/images/iconNavbar/bellIcon.svg";
-import unionIcon from "../../assets/images/iconNavbar/unionIcon.svg";
+// import bellIcon from "../../assets/images/iconNavbar/bellIcon.svg";
+// import unionIcon from "../../assets/images/iconNavbar/unionIcon.svg";
 
 // 2. Impor ikon untuk Burger & Search
 import { FaSearch } from "react-icons/fa";
@@ -53,7 +53,7 @@ function Navbar() {
       </ul>
 
       {/* 7. Bagian Aksi Kanan (Desktop) */}
-      <div className={styles.navActions}>
+      {/* <div className={styles.navActions}>
         <div className={styles.searchBar}>
           <input type="text" placeholder="What are you looking for?" />
           <FaSearch className={styles.searchIcon} />
@@ -67,7 +67,7 @@ function Navbar() {
             <img src={unionIcon} alt="Profil" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* 8. Ikon Burger (Hanya tampil di HP) */}
       <div
