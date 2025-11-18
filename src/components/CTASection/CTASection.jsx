@@ -11,9 +11,12 @@ function CTASection() {
 
       {/* Tombol yang diubah */}
       <a
-        href="../../../public/app/app-release.apk" // <-- INI LINK KE FOLDER PUBLIC
-        download="app-release.apk" // <-- Atribut ini "memaksa" download
+        // Tempel link GitHub Anda di sini 👇
+        href="https://github.com/MochAdriq/WebTimeTrack/releases/download/v1.0.1/app-release.apk"
         className={styles.downloadButton}
+        // Hapus atribut 'download' karena browser akan otomatis download dari GitHub
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Download di sini
       </a>
