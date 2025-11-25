@@ -44,6 +44,7 @@ This project is built with a modern, type-safe stack to ensure scalability and p
 
 ## 📂 Project Structure
 
+```bash
 .
 ├── app/                  # Next.js App Router pages
 │   ├── (auth)/           # Authentication routes (Login/Register)
@@ -55,6 +56,8 @@ This project is built with a modern, type-safe stack to ensure scalability and p
 ├── lib/                  # Utility functions & Supabase client
 ├── public/               # Static assets (images, icons)
 └── types/                # TypeScript type definitions
+
+```
 
 -----
 
