@@ -113,6 +113,4 @@ This project is licensed under the [MIT License](https://www.google.com/search?q
 
 -----
 
-\<p align="center"\>
-Built with ❤️ by \<a href="https://www.google.com/search?q=https://github.com/mochadriq"\>\<b\>Mochadriq\</b\>\</a\>
-\</p\>
+Built with ❤️ by Mochadriq
