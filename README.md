@@ -68,7 +68,7 @@ Follow these steps to run the project locally:
 ### 1\. Clone the Repository
 
 ```bash
-git clone [https://github.com/mochadriq/time-track-web.git](https://github.com/mochadriq/time-track-web.git)
+git clone https://github.com/MochAdriq/WebTimeTrack.git
 cd time-track-web
 ```
 
